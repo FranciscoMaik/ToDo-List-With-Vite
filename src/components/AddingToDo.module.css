@@ -1,0 +1,36 @@
+.contentForm {
+    width: 48rem;
+    display: flex;
+    gap: 0.5rem;
+    margin-top: calc(0px - 1.5rem - 4px);
+}
+
+.contentForm input {
+    flex: 1;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--gray-700);
+    background: var(--gray-500);
+}
+
+.contentForm input::placeholder {
+    color: var(--gray-300);
+    line-height: 1.4;
+}
+
+.contentForm button {
+    background: var(--blue-600);
+    color: var(--gray-100);
+    font-size: 0.875rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    cursor: pointer;
+}

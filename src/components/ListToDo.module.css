@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 48rem;
+    align-items: center;
+    margin-top: 4.0625rem;
+}
+
+.container header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.tasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tasks strong{
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--blue-300);
+    line-height: 1.4;
+}
+
+.tasks span{
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--gray-200);
+    background: var(--gray-400);
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+}
+
+.finished {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.finished strong{
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--purple-300);
+    line-height: 1.4;
+}
+
+.finished span{
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--gray-200);
+    background: var(--gray-400);
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+}
