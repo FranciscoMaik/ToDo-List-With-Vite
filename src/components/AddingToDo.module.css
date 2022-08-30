@@ -11,6 +11,7 @@
     padding: 1rem;
     border: 1px solid var(--gray-700);
     background: var(--gray-500);
+    color: var(--gray-100);
 }
 
 .contentForm input::placeholder {
@@ -33,4 +34,10 @@
     gap: 0.5rem;
 
     cursor: pointer;
+
+    transition: background 400ms;
+}
+
+.contentForm button:hover {
+    background: var(--blue-300);
 }

@@ -9,48 +9,106 @@
     margin-bottom: 0.75rem;
 }
 
-.item {
+.container button {
+    background-color: transparent;
+    border: none;
+    color: var(--gray-300);
+    cursor: pointer;
+    padding: 0.3125rem;
+    border-radius: 4px;
     display: flex;
-    gap: 0.75rem;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+
+    transition: color 400ms, background 400ms;
 }
 
-.item label {
+.container button:hover {
+    background-color: var(--gray-400);
+    color: var(--red-100);
+}
+
+.item {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding-left: 2rem;
     color: var(--gray-100);
+}
+
+.item p {
     max-width: 39.5rem;
-    line-height: 1.4;
-}
-
-.item input[type="radio"] {
-    display: none;
-}
-
-.item label {
     cursor: pointer;
 }
 
-.item input[type="radio"] + label:before, 
-.item input[type="checkbox"] + label:before {
+.item p::first-letter {
+    text-transform: capitalize;
+}
+
+.radio {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+    width: 0px;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.2rem;
+    width: 1.2rem;
+    background-color: transparent;
     border: 1px solid var(--blue-300);
-    content: "\00a0";
-    display: inline-block;
-    height: 1rem;
-    margin: 0 1rem 0 0;
-    padding: 0;
-    vertical-align: top;
-    width: 1rem;
-    border-radius:50%;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: background 400ms, border 400ms;
 }
 
-.item input[type="radio"]:checked + label:before, 
-.item input[type="checkbox"]:checked + label:before {
-    background: red;
-    color: #FFF;
-    content: "\2713";
-    text-align: center;
+.item:hover input ~ .checkmark {
+    border: 1px solid var(--blue-600);
+    background-color: rgba(30, 111, 159, 0.2);
 }
 
-.item input[type="radio"]:checked + label:after, 
-.item input[type="checkbox"]:checked + label:after {
-    font-weight: bold;
+.item input:checked ~ .checkmark {
+    background: var(--purple-600);
+    border: 1px solid var(--purple-600);
+
+    transition: background 400ms, border 400ms;
 }
+
+.item input:checked ~ .checkmark:hover {
+    background: var(--purple-300);
+    border: 1px solid var(--purple-300);
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none; 
+}
+
+.item input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.item input:checked ~ p {
+    color: var(--gray-300);
+    text-decoration: line-through;
+}
+
+.item .checkmark::after {
+    left: 7px;
+    top: 3px;
+    width: 2px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
