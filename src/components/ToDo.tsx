@@ -7,11 +7,16 @@ interface ToDoProps {
   todoItem: string;
   checked: boolean;
   handleCheckedToDo: (idToDo: string) => void;
+  handleDeleteToDo: (idToDo: string) => void;
 }
 
-function ToDo({ id, todoItem, handleCheckedToDo }: ToDoProps) {
+function ToDo({ id, todoItem, handleCheckedToDo, handleDeleteToDo }: ToDoProps) {
   function handleSelectedToDo() {
     handleCheckedToDo(id);
+  }
+
+  function handleDeleteToDoSelected() {
+    handleDeleteToDo(id);
   }
 
   return (
@@ -30,7 +35,7 @@ function ToDo({ id, todoItem, handleCheckedToDo }: ToDoProps) {
         </label>
       </div>
 
-      <button>
+      <button name="delete" onClick={handleDeleteToDoSelected}>
         <Trash size={24}/>
       </button>
     </div>

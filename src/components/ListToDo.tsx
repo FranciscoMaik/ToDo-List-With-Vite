@@ -3,15 +3,21 @@ import ToDo from "./ToDo";
 import { ToDoProps } from "../App";
 
 import styles from "./ListToDo.module.css"
+import { useEffect, useState } from "react";
 
 interface ListToDoProps {
   todos: ToDoProps[];
   handleCheckedToDo: (idToDo: string) => void;
+  handleDeleteToDo: (idToDo: string) => void;
 }
 
-function ListToDo({ todos, handleCheckedToDo }: ListToDoProps) {
-  const toDosSelected = todos.filter(item => item.checked).length;
-  console.log("💻 ~ file: ListToDo.tsx ~ line 14 ~ ListToDo ~ toDosSelected", toDosSelected)
+function ListToDo({ todos, handleCheckedToDo, handleDeleteToDo }: ListToDoProps) {
+  const [toDosSelected, setToDosSelected] = useState(0);
+
+  useEffect(() => {
+    const lengthToDosSelected = todos.filter(item => item.checked).length;
+    setToDosSelected(lengthToDosSelected);
+  },[todos])
 
   return (
     <div className={styles.container}>
@@ -37,6 +43,7 @@ function ListToDo({ todos, handleCheckedToDo }: ListToDoProps) {
             todoItem={todo.todo}
             checked={todo.checked}
             handleCheckedToDo={handleCheckedToDo}
+            handleDeleteToDo={handleDeleteToDo}
           />
         ))
       )}

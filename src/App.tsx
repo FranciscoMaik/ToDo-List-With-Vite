@@ -27,14 +27,20 @@ function App() {
   }
 
   function handleCheckedToDo(idToDo: string) {
-    const findToDo = toDos.findIndex(item => item.id === idToDo);
-    if (findToDo !== -1) {
-      if(toDos[findToDo].checked === false){
-        toDos[findToDo] = {...toDos[findToDo], checked: true}
-      }else{
-        toDos[findToDo] = {...toDos[findToDo], checked: false}
+    const findToDo = toDos.find(item => item.id === idToDo);
+    const toDosNoSelected = toDos.filter(items => items.id !== idToDo);
+    if(findToDo){
+      if (findToDo?.checked === true) {
+        setToDos([...toDosNoSelected, {...findToDo, checked: false}]);
+      }else {
+        setToDos([...toDosNoSelected, {...findToDo, checked: true}]);
       }
     }
+  }
+
+  function handleDeleteToDo(idToDo: string) {
+    const toDosNoDeleted = toDos.filter(items => items.id !== idToDo);
+    setToDos(toDosNoDeleted);
   }
 
   return (
@@ -42,7 +48,11 @@ function App() {
       <Header />
       <div className={styles.container}>
         <AddingToDo handleSetNewToDoInList={handleSetNewToDoInList}/>
-        <ListToDo todos={toDos} handleCheckedToDo={handleCheckedToDo}/>
+        <ListToDo 
+          todos={toDos} 
+          handleCheckedToDo={handleCheckedToDo}
+          handleDeleteToDo={handleDeleteToDo}
+        />
       </div>
     </>
   )
