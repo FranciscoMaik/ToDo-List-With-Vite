@@ -18,7 +18,7 @@ function App() {
 
   function handleSetNewToDoInList(newToDo: string) {
     const newItemListToDo = {
-      id: (toDos.length + 1).toString(),
+      id: (toDos.length + 1).toString() + newToDo,
       todo: newToDo,
       checked: false
     };
