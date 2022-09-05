@@ -9,16 +9,15 @@ interface ListToDoProps {
   todos: ToDoProps[];
   handleCheckedToDo: (idToDo: string) => void;
   handleDeleteToDo: (idToDo: string) => void;
+  itemsSelected: number;
 }
 
-function ListToDo({ todos, handleCheckedToDo, handleDeleteToDo }: ListToDoProps) {
-  const [toDosSelected, setToDosSelected] = useState(0);
-
-  useEffect(() => {
-    const lengthToDosSelected = todos.filter(item => item.checked).length;
-    setToDosSelected(lengthToDosSelected);
-  },[todos])
-
+function ListToDo({ 
+    todos, 
+    handleCheckedToDo, 
+    handleDeleteToDo,
+    itemsSelected }: ListToDoProps
+  ){
   return (
     <div className={styles.container}>
       <header>
@@ -29,7 +28,7 @@ function ListToDo({ todos, handleCheckedToDo, handleDeleteToDo }: ListToDoProps)
 
         <div className={styles.finished}>
           <strong>Concluídas</strong>
-          <span>{`${toDosSelected} de ${todos.length}`}</span>
+          <span>{`${itemsSelected} de ${todos.length}`}</span>
         </div>
       </header>
 

@@ -15,6 +15,7 @@ export interface ToDoProps {
 
 function App() {
   const [toDos, setToDos] = useState<ToDoProps[]>([]);
+  const [countItemsSelected, setCountItemsSelected] = useState(0);
 
   function handleSetNewToDoInList(newToDo: string) {
     const newItemListToDo = {
@@ -27,13 +28,14 @@ function App() {
   }
 
   function handleCheckedToDo(idToDo: string) {
-    const findToDo = toDos.find(item => item.id === idToDo);
-    const toDosNoSelected = toDos.filter(items => items.id !== idToDo);
-    if(findToDo){
-      if (findToDo?.checked === true) {
-        setToDos([...toDosNoSelected, {...findToDo, checked: false}]);
+    const findToDo = toDos.findIndex(item => item.id === idToDo);
+    if(findToDo !== -1){
+      if (toDos[findToDo].checked === true) {
+        toDos[findToDo].checked = false;
+        setCountItemsSelected(prev => prev - 1);
       }else {
-        setToDos([...toDosNoSelected, {...findToDo, checked: true}]);
+        toDos[findToDo].checked = true;
+        setCountItemsSelected(prev => prev + 1);
       }
     }
   }
@@ -52,6 +54,7 @@ function App() {
           todos={toDos} 
           handleCheckedToDo={handleCheckedToDo}
           handleDeleteToDo={handleDeleteToDo}
+          itemsSelected={countItemsSelected}
         />
       </div>
     </>
